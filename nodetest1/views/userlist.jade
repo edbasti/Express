@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	h1= title
+	#userList
+		table
+			thead
+				tr: th userlist
+			tbody
+				each user, i in userlist
+					tr
+						td 
+							a(href="mailto:#{user.email}")= user.username
+						td
+							input(type="text", class="username" name="username" value=user.username)
+						td
+							input(type="text",  class="useremail" name="useremail" value=user.email)
+						td
+							input(rel=user._id, data-username=user.username, data-useremail=user.email, type="button", class="editemail", value="edit")
+							input(rel=user._id, type="button", class="deleteemail", value="delete")				
